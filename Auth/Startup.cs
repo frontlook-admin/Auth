@@ -56,7 +56,7 @@ namespace Auth
             if (env.IsDevelopment())
             {
                 services.AddDbContext<AuthContext>(o =>
-                    o.UseMySql(Configuration.GetConnectionString("Generic") + "acclead").EnableSensitiveDataLogging()
+                    o.UseMySql(Configuration.GetConnectionString("Generic") + "auth").EnableSensitiveDataLogging()
                 );
                 services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddEntityFrameworkStores<AuthContext>();
@@ -114,6 +114,7 @@ namespace Auth
 
             services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
             services.AddControllers();
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -152,6 +153,7 @@ namespace Auth
             {
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
+                endpoints.MapDefaultControllerRoute();
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

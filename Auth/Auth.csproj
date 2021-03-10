@@ -67,4 +67,10 @@
 	  <!--New Packages-->
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Helper\" />
+    <Folder Include="Models\Repository\" />
+    <Folder Include="Pages\Account\" />
+  </ItemGroup>
+
 </Project>
